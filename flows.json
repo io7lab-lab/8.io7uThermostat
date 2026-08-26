@@ -1,0 +1,450 @@
+[
+    {
+        "id": "d1ea13bb24642f67",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1080bc42c4fdd3b7",
+        "type": "group",
+        "z": "d1ea13bb24642f67",
+        "name": "Thermostat and Valve",
+        "style": {
+            "label": true,
+            "color": "#001f60",
+            "stroke": "#ffcf3f"
+        },
+        "nodes": [
+            "72e0749312a5e8f9",
+            "bac6c96ba1a8a468",
+            "84facb582e942e1d",
+            "b89a345623ba1d1a",
+            "5d1114d64103183d",
+            "b7b7a12864136d8f",
+            "6afdd53129f74798",
+            "ea3db8346943117e",
+            "0395bccb9cf27043",
+            "c3fa59314fca1a03",
+            "b57518418e99561e",
+            "07af09ee725c0c0c"
+        ],
+        "x": 94,
+        "y": 139,
+        "w": 832,
+        "h": 282
+    },
+    {
+        "id": "da5c67868cb1cb4f",
+        "type": "io7-hub",
+        "name": "app",
+        "host": "mqtt",
+        "useTLS": false,
+        "knownPort": true,
+        "port": "1883",
+        "tls": "",
+        "clientid": ""
+    },
+    {
+        "id": "e04cdb085148a152",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "420a0ab612fb4a1b",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "b50c199965e3d5f4",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "e04cdb085148a152",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "420a0ab612fb4a1b",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "82fa2280122d9cbb",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "b50c199965e3d5f4",
+        "width": 4,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "72e0749312a5e8f9",
+        "type": "io7 in",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "valve1",
+        "deviceId": "valve1",
+        "authentication": "da5c67868cb1cb4f",
+        "evt": "status",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": false,
+        "allFormats": false,
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "5d1114d64103183d"
+            ]
+        ]
+    },
+    {
+        "id": "bac6c96ba1a8a468",
+        "type": "io7 out",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "authentication": "da5c67868cb1cb4f",
+        "name": "valve1",
+        "deviceId": "valve1",
+        "cmd": "power",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 850,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "84facb582e942e1d",
+        "type": "io7 out",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "authentication": "da5c67868cb1cb4f",
+        "name": "thermostat1",
+        "deviceId": "thermostat1",
+        "cmd": "set",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 830,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b89a345623ba1d1a",
+        "type": "io7 in",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "thermostat1",
+        "deviceId": "thermostat1",
+        "authentication": "da5c67868cb1cb4f",
+        "evt": "status",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": false,
+        "allFormats": false,
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "ea3db8346943117e",
+                "6afdd53129f74798"
+            ]
+        ]
+    },
+    {
+        "id": "5d1114d64103183d",
+        "type": "function",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "update ui",
+        "func": "msg.payload = msg.payload.d.valve;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "c3fa59314fca1a03"
+            ]
+        ]
+    },
+    {
+        "id": "b7b7a12864136d8f",
+        "type": "function",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "command",
+        "func": "msg.payload = {\n    \"d\" : {\n        \"valve\" : msg.payload\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 180,
+        "wires": [
+            [
+                "bac6c96ba1a8a468"
+            ]
+        ]
+    },
+    {
+        "id": "6afdd53129f74798",
+        "type": "function",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "automate",
+        "func": "let evt1 = { d : {}};\n\nif (msg.payload.d.target > msg.payload.d.temperature) {\n    evt1.d.valve = 'on';\n} else {\n    evt1.d.valve = 'off';  \n}\nreturn {payload : evt1};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 280,
+        "wires": [
+            [
+                "bac6c96ba1a8a468"
+            ]
+        ]
+    },
+    {
+        "id": "ea3db8346943117e",
+        "type": "function",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "update ui 2",
+        "func": "let target = {\n    payload : msg.payload.d.target\n}\nlet temperature = {\n    payload : msg.payload.d.temperature\n}\nreturn [target, temperature];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 360,
+        "wires": [
+            [
+                "07af09ee725c0c0c"
+            ],
+            [
+                "b57518418e99561e"
+            ]
+        ]
+    },
+    {
+        "id": "0395bccb9cf27043",
+        "type": "function",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "command",
+        "func": "msg.payload = {\n    \"d\" : {\n        \"target\" : msg.payload\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 360,
+        "wires": [
+            [
+                "84facb582e942e1d"
+            ]
+        ]
+    },
+    {
+        "id": "b57518418e99561e",
+        "type": "ui-gauge",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "",
+        "group": "82fa2280122d9cbb",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 2,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "현재온도",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "℃",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "22",
+                "color": "#0056d6",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "32",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 520,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07af09ee725c0c0c",
+        "type": "ui-slider",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "group": "82fa2280122d9cbb",
+        "name": "",
+        "label": "설정온도",
+        "tooltip": "",
+        "order": 2,
+        "width": 2,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": "10",
+        "max": "60",
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 520,
+        "y": 340,
+        "wires": [
+            [
+                "0395bccb9cf27043"
+            ]
+        ]
+    },
+    {
+        "id": "c3fa59314fca1a03",
+        "type": "ui-switch",
+        "z": "d1ea13bb24642f67",
+        "g": "1080bc42c4fdd3b7",
+        "name": "",
+        "label": "밸브",
+        "group": "82fa2280122d9cbb",
+        "order": 3,
+        "width": 2,
+        "height": 0,
+        "passthru": false,
+        "decouple": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "b7b7a12864136d8f"
+            ]
+        ]
+    }
+]
