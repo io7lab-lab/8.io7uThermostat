@@ -121,6 +121,7 @@ from IO7FuPython import ConfiguredDevice
 import json
 import time
 import uComMgr32
+from machine import Pin
 
 def handleCommand(topic, msg):
     global lastPub
@@ -138,7 +139,6 @@ device.setUserCommand(handleCommand)
 
 device.connect()
 
-from machine import Pin
 valve = Pin(15, Pin.OUT)
 lastPub = time.ticks_ms() - device.meta['pubInterval']
 
