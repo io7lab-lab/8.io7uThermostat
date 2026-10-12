@@ -127,7 +127,7 @@ def handleCommand(topic, msg):
     global lastPub
     jo = json.loads(str(msg,'utf8'))
     if ("valve" in jo['d']):
-        if jo['d']['valve'] is 'on':
+        if jo['d']['valve'] == 'on':
             valve.on()
         else:
             valve.off()
